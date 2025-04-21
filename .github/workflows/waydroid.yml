@@ -158,6 +158,8 @@ jobs:
 
       - name: Repo Build
         run: |
+          TERM=xterm-256color
+
           # Install Repo
           mkdir ~/.bin
           curl https://storage.googleapis.com/git-repo-downloads/repo > ~/.bin/repo
@@ -168,7 +170,7 @@ jobs:
           repo init -u https://github.com/LineageOS/android.git -b lineage-20.0 --git-lfs
           repo sync build/make -j$(nproc --all)
           wget -O - https://raw.githubusercontent.com/waydroid/android_vendor_waydroid/lineage-20/manifest_scripts/generate-manifest.sh | bash
-          repo sync
+          repo sync -j$(nproc --all)
           . build/envsetup.sh
           apply-waydroid-patches
           . build/envsetup.sh
