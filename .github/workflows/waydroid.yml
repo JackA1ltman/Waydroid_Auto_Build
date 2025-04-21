@@ -171,7 +171,7 @@ jobs:
           repo sync build/make -j$(nproc --all)
           wget https://raw.githubusercontent.com/waydroid/android_vendor_waydroid/lineage-20/manifest_scripts/generate-manifest.sh
           chmod 777 generate-manifest.sh
-          timeout --preserve-status 15s bash generate-manifests.sh
+          timeout --preserve-status 15s $GITHUB_WORKSPACE/generate-manifests.sh
           repo sync -j$(nproc --all)
           . build/envsetup.sh
           apply-waydroid-patches
