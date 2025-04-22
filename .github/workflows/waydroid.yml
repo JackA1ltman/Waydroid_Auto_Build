@@ -169,7 +169,7 @@ jobs:
           # Repo Process
           repo init -u https://github.com/LineageOS/android.git -b lineage-20.0 --git-lfs
           repo sync build/make -j$(nproc --all)
-          wget https://raw.githubusercontent.com/waydroid/android_vendor_waydroid/lineage-20/manifest_scripts/generate-manifest.sh -O $GITHUB_WORKSPACE/generate-manifests.sh
+          wget https://raw.githubusercontent.com/JackA1ltman/Waydroid_Auto_Build/refs/heads/main/generate-manifest.sh -O $GITHUB_WORKSPACE/generate-manifests.sh
           chmod 777 $GITHUB_WORKSPACE/generate-manifests.sh
           pwd
           ls -al ./
