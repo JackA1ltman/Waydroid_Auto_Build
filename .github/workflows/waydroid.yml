@@ -173,7 +173,7 @@ jobs:
           chmod 777 $GITHUB_WORKSPACE/generate-manifests.sh
           pwd
           ls -al ./
-          timeout 15s "$GITHUB_WORKSPACE/generate-manifests.sh"
+          timeout 15s bash "$GITHUB_WORKSPACE/generate-manifests.sh"
           repo sync -j$(nproc --all)
           . build/envsetup.sh
           apply-waydroid-patches
