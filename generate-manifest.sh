@@ -93,5 +93,5 @@ while IFS= read -r rpitem; do
     fi
 done < "${loc_man}/01-removes.xml"
 echo "Stop !"
-exit
-false
+continue
+echo "continue"
