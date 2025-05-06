@@ -75,19 +75,7 @@ fi
 echo -e ${reset}""${reset}
 echo -e ${teal}"INFO: Cleaning up remove manifest entries"${reset}
 echo -e ${reset}""${reset}
-
-start_time=$(date +%s)  # 记录开始时间
-max_duration=10         # 设置最大运行秒数（可改）
-
 while IFS= read -r rpitem; do
-    # 检查是否超时
-    current_time=$(date +%s)
-    elapsed=$((current_time - start_time))
-    if (( elapsed > max_duration )); then
-        echo -e "${ltred}ERROR: Script exceeded ${max_duration}s, exiting to avoid hang in CI.${reset}"
-        exit 1
-    fi
-
     if [[ $rpitem == *"remove-project"* ]]; then
         rpitem_trimmed="$(echo "$rpitem" | xargs)"
         if grep -qRlZ "$rpitem_trimmed" "${top_dir}/.repo/manifests/"; then
@@ -103,6 +91,6 @@ while IFS= read -r rpitem; do
             fi
         fi
     fi
+    echo "Stop !"
+    break
 done < "${loc_man}/01-removes.xml"
-
-exit 0
